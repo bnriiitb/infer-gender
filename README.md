@@ -34,3 +34,31 @@ Install by navigating to the proper directory and running:
 ```sh
 python setup.py install
 ```
+
+
+## Documentation
+---
+
+The documentation for pandas_profiling can be found here. Previous documentation is still available here.
+
+### Getting started
+
+Start by loading in your pandas DataFrame, e.g. by using:
+```python
+
+from infer_gender import GenderPredictor
+gp = GenderPredictor()
+sample_names = ['katrina kaif','narendra modi','naga budigam','james bond','samantha']
+predicted_genders = gp.predict_gender(sample_names)
+for name,pred_gender in zip(sample_names,predicted_genders):
+    print('{} --> {}'.format(name,pred_gender))
+```
+
+```text
+katrina kaif --> Female
+narendra modi --> Male
+naga budigam --> Male
+james bond --> Male
+samantha --> Female
+
+```
