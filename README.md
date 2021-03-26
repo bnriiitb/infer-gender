@@ -48,8 +48,10 @@ Start by loading in your pandas DataFrame, e.g. by using:
 
 from infer_gender import GenderPredictor
 gp = GenderPredictor()
+
 sample_names = ['katrina kaif','narendra modi','naga budigam','james bond','samantha']
 predicted_genders = gp.predict_gender(sample_names)
+
 for name,pred_gender in zip(sample_names,predicted_genders):
     print('{} --> {}'.format(name,pred_gender))
 ```
