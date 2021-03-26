@@ -8,8 +8,6 @@ Infers gender from the indian first name or full name.
 ## Installation
 ---
 ### Using pip
-[![PyPi Downloads](https://pepy.tech/badge/infer-gender)](https://pepy.tech/project/infer-gender)
-[![PyPi Monthly Downloads](https://pepy.tech/badge/infer-gender/month)](https://pepy.tech/project/infer-gender/month)
 [![PyPi Version](https://badge.fury.io/py/infer-gender.svg)](https://pypi.org/project/infer-gender/)
 
 You can install using the pip package manager by running
