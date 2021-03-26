@@ -25,7 +25,7 @@ setup(
     ],
     packages=["infer_gender"],
     include_package_data=True,
-    install_requires=["feedparser", "html2text"],
+    install_requires=["missingno", "pandas","numpy","matplotlib","scikit_learn","tensorflow","tensorflow_addons"],
     entry_points={
         "console_scripts": [
             "infer_gender=infer_gender.__main__:main",
