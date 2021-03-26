@@ -11,7 +11,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="infer-gender",
     version="0.1.0",
-    description="Infer gender from an Indian first name or full name",
+    description="Infer gender from the Indian first name or full name",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/bnriiitb/infer-gender",
