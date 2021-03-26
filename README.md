@@ -39,11 +39,8 @@ python setup.py install
 ## Documentation
 ---
 
-The documentation for pandas_profiling can be found here. Previous documentation is still available here.
-
 ### Getting started
 
-Start by loading in your pandas DataFrame, e.g. by using:
 ```python
 
 from infer_gender import GenderPredictor
