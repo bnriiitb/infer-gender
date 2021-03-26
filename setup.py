@@ -25,8 +25,7 @@ setup(
     ],
     packages=["infer_gender"],
     include_package_data=True,
-    install_requires=["missingno>=0.4.2", "pandas==1.2.1", "numpy==1.19.2", "matplotlib==3.3.1", "scikit_learn==0.24.1",
-                      "tensorflow==2.4.1", "tensorflow_addons==0.12.1"],
+    install_requires=["scikit_learn==0.24.1","tensorflow==2.4.1"],
     entry_points={
         "console_scripts": [
             "infer_gender=infer_gender.__main__:main",
