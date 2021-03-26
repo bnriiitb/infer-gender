@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import pickle
 import tensorflow as tf
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
@@ -18,14 +20,14 @@ def save_as_pickle(file, name):
     # saving
     with open('{}.pickle'.format(name), 'wb') as handle:
         pickle.dump(file, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    print('successfully persisted {}'.format(name))
+    print('Successfully persisted {}'.format(name))
 
 
 def load_pickle(file_name):
     loaded_pickle = None
     with open('{}.pickle'.format(file_name), 'rb') as handle:
         loaded_pickle = pickle.load(handle)
-    print('successfully loaded {}'.format(file_name))
+    print('Successfully loaded {}'.format(file_name))
     return loaded_pickle
 
 
