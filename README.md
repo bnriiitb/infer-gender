@@ -36,10 +36,8 @@ python setup.py install
 ```
 
 
-## Documentation
+## Usage
 ---
-
-### Getting started
 
 ```python
 
