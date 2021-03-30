@@ -1,6 +1,7 @@
 import os
+import sys
 from pathlib import Path
-import pickle
+import pickle as pickle
 import tensorflow as tf
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -21,7 +22,7 @@ def compute_scores(df, pred_col):
 def save_as_pickle(file, name):
     # saving
     with open('{}.pickle'.format(name), 'wb') as handle:
-        pickle.dump(file, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(file, handle)
     print('Successfully persisted {}'.format(name))
 
 
@@ -44,13 +45,17 @@ class GenderPredictor:
         # load the persisted files
         data_path = Path(__file__).parent / Path("data")
         tokenizer_pickle_path = data_path / Path('tokenizer.pickle')
+        if sys.version_info[0] < 3 and sys.version_info[1]<8:
+            tokenizer_pickle_path = data_path / Path('py37') / Path('tokenizer.pickle')
         model_path = data_path / Path('model.h5')
 
         print('Loading tokenizer pickle file from {}'.format(tokenizer_pickle_path))
         print('Loading model file from {}'.format(model_path))
 
         self.tokenizer = load_pickle(tokenizer_pickle_path)
-        self.model = tf.keras.models.load_model(model_path)
+        self.model = tf.keras.models.load_model(model_path, compile = False)
+
+        # save_as_pickle(self.tokenizer, 'infer_gender/data/py37/tokenizer')
 
     def _transform_texts(self, texts):
         sample_sequences = self.tokenizer.texts_to_sequences(texts)
