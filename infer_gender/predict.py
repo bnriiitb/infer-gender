@@ -1,9 +1,11 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+from pathlib import Path
 import pickle
 import tensorflow as tf
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 def compute_scores(df, pred_col):
@@ -24,8 +26,9 @@ def save_as_pickle(file, name):
 
 
 def load_pickle(file_name):
+    # print('pwd --> {}'.format(os.getcwd()))
     loaded_pickle = None
-    with open('{}.pickle'.format(file_name), 'rb') as handle:
+    with open('{}'.format(file_name), 'rb') as handle:
         loaded_pickle = pickle.load(handle)
     print('Successfully loaded {}'.format(file_name))
     return loaded_pickle
@@ -39,15 +42,31 @@ class GenderPredictor:
         self.trunc_type = 'post'
         self.oov_tok = "<OOV>"
         # load the persisted files
-        self.tokenizer = load_pickle('infer_gender/model/tokenizer')
-        self.model = tf.keras.models.load_model("infer_gender/model/model.h5")
+        data_path = Path(__file__).parent / Path("data")
+        tokenizer_pickle_path = data_path / Path('tokenizer.pickle')
+        model_path = data_path / Path('model.h5')
 
-    def transform_texts(self, texts):
+        print('Loading tokenizer pickle file from {}'.format(tokenizer_pickle_path))
+        print('Loading model file from {}'.format(model_path))
+
+        self.tokenizer = load_pickle(tokenizer_pickle_path)
+        self.model = tf.keras.models.load_model(model_path)
+
+    def _transform_texts(self, texts):
         sample_sequences = self.tokenizer.texts_to_sequences(texts)
         sample_padded = pad_sequences(sample_sequences, maxlen=self.max_length, truncating=self.trunc_type)
         return sample_padded
 
-    def predict_gender(self,names):
-        preds = self.model.predict(self.transform_texts(names))
-        pred_gender = ['Male' if pred>=0.6 else 'Female' for pred in preds]
+    def predict_gender(self, names):
+        preds = self.model.predict(self._transform_texts(names))
+        pred_gender = ['Male' if pred >= 0.6 else 'Female' for pred in preds]
         return pred_gender
+
+    def predict_gender_proba(self, names):
+        preds = self.model.predict(self._transform_texts(names))
+        # pred_gender = ['Male' if pred >= 0.6 else 'Female' for pred in preds]
+        return preds
+
+    # if __name__=='__main__':
+    #     from infer_gender import GenderPredictor
+    #     gp = GenderPredictor()

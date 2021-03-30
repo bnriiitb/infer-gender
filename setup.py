@@ -1,5 +1,5 @@
 import pathlib
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
@@ -18,17 +18,18 @@ setup(
     author="Nagaraju Budigam",
     author_email="nagaraju.iith@gmail.com",
     license="MIT",
-    classifiers=[
-        "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-    ],
-    packages=["infer_gender"],
-    include_package_data=True,
+    packages=find_packages(),
     install_requires=["scikit_learn==0.24.1","tensorflow==2.4.1"],
-    entry_points={
-        "console_scripts": [
-            "infer_gender=infer_gender.__main__:main",
-        ]
-    },
+    include_package_data=True,
+    classifiers=[
+            "License :: OSI Approved :: MIT License",
+            "Programming Language :: Python :: 3",
+            "Programming Language :: Python :: 3.7",
+        ],
+
+    # entry_points={
+    #     "console_scripts": [
+    #         "infer_gender=infer_gender.__main__:main",
+    #     ]
+    # },
 )
