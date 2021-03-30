@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="infer-gender",
-    version="0.1.3",
+    version="0.1.4",
     description="Infer gender from the Indian first name or full name",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
     author_email="nagaraju.iith@gmail.com",
     license="MIT",
     packages=find_packages(),
-    install_requires=["scikit_learn==0.24.1","tensorflow==2.4.1"],
+    install_requires=["scikit_learn>0.22","tensorflow>2.1.0"],
     include_package_data=True,
     classifiers=[
             "License :: OSI Approved :: MIT License",
