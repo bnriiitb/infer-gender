@@ -45,8 +45,10 @@ class GenderPredictor:
         # load the persisted files
         data_path = Path(__file__).parent / Path("data")
         tokenizer_pickle_path = data_path / Path('tokenizer.pickle')
-        if sys.version_info[0] < 3 and sys.version_info[1]<8:
+        if sys.version_info[0] ==3 and sys.version_info[1]<8:
             tokenizer_pickle_path = data_path / Path('py37') / Path('tokenizer.pickle')
+        elif sys.version_info[0]<3:
+            raise Exception("infer_gender doesn\'t support python2")
         model_path = data_path / Path('model.h5')
 
         print('Loading tokenizer pickle file from {}'.format(tokenizer_pickle_path))
