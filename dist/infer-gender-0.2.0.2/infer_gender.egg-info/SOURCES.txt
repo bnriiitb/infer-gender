@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.py
+infer_gender/__init__.py
+infer_gender/predict.py
+infer_gender.egg-info/PKG-INFO
+infer_gender.egg-info/SOURCES.txt
+infer_gender.egg-info/dependency_links.txt
+infer_gender.egg-info/requires.txt
+infer_gender.egg-info/top_level.txt
+infer_gender/data/.DS_Store
+infer_gender/data/model.h5
+infer_gender/data/tokenizer.pickle
+infer_gender/data/py37/tokenizer.pickle
+tests/__init__.py
+tests/main.py
