@@ -17,7 +17,7 @@ pip install infer-gender
 
 Alternatively, you could install the latest version directly from Github:
 ```sh
-pip install https://github.com/bnriitb/infer-gender/infer-gender/archive/master.zip
+pip install https://github.com/bnriiitb/infer-gender/infer-gender/archive/master.zip
 ```
 
 ### Using conda
