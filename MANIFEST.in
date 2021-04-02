@@ -1,3 +1,0 @@
-include README.md
-include infer_gender/data/*
-include infer_gender/data/py37/*

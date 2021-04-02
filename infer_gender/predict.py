@@ -8,7 +8,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-
 def compute_scores(df, pred_col):
     precision, recall, f1_score, support = precision_recall_fscore_support(df.gender, df[pred_col], average='binary')
     accuracy = accuracy_score(df.gender, df[pred_col])
